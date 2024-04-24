@@ -15,7 +15,7 @@ import { SvgComponent } from './svgs/svg.component';
 export class AppComponent {
   books: Book[];
   currentBook!: Book;
-  currentIndex: number = 0;
+  currentIndex: number = 9;
 
   constructor(private bookService: BookService) {
     this.books = this.bookService.getAllBooks();

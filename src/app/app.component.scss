@@ -2,14 +2,14 @@
 
 main {
   display: grid;
-  justify-content: center;
   height: 100svh;
+  width: 100svw;
   font-size: 1rem;
   & h1 {
     text-align: center;
     font-size: 2rem;
   }
-  @include mq(small){
+  @include mq(40em){
     font-size: 2rem;
     & h1 {
       font-size: 3rem;
@@ -35,18 +35,20 @@ main {
 }
 
 .book {
+  gap: 2rem;
   padding: .5rem;
   & .book-img {
-    min-height: 420px;
+    justify-self: end;
+    height: clamp(420px, 30vw, 820px);
+    aspect-ratio: 2/3;
     border: solid 3px var(--clr-text);
     border-radius: 10px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
-  @include mq(medium){
-    grid-template-columns: 60% 40%;
-    min-height: 620px;
+  @include mq(60em){
+    grid-template-columns: 50% 50%;
   }
 }
 
@@ -108,6 +110,7 @@ main {
 }
 
 footer {
+  text-align: center;
   span {
     color: var(--clr-secondary);
   }

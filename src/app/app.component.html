@@ -1,7 +1,7 @@
 <main>
     <h1>Book Rater</h1>
     @if (currentBook) {
-        <div class="book even-columns">
+        <div class="book container even-columns">
             <div class="book-img" aria-label="img" style="background-image: url({{currentBook.img}});">
             </div>
             <div class="book-info" aria-label="">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <footer>
-            <p> <span>book </span> {{currentIndex + 1}} / 10 </p>
+            <p> <span>Book </span> {{currentIndex + 1}} / 10 </p>
         </footer>
     }
 </main>
