@@ -1,23 +1,26 @@
 <main>
     <h1>Book Rater</h1>
-    @for (book of books; track $index) {
-        <div>
-            <div aria-label="img">
-                <img src={{book.img}} alt="Book cover">
+    @if (currentBook) {
+        <div class="book even-columns">
+            <div class="book-img" aria-label="img" style="background-image: url({{currentBook.img}});">
             </div>
-            <div class="book" aria-label="">
-                <h2>{{ book.title }}</h2>
-                <p>{{ book.author }}</p>
-                <p>{{ book.description }}</p>
-                <p>{{ book.rating }}</p>
-                <div>
-                    <!-- Stars Here -->
+            <div class="book-info" aria-label="">
+                <h2><span>Title:</span> {{ currentBook.title }}</h2>
+                <p><span>Author:</span> {{ currentBook.author }}</p>
+                <p><span>Description:</span> {{ currentBook.description }}</p>
+                <p><span>Current rating:</span> {{ currentBook.rating }}</p>
+                <div class="display-flex">
+                    <app-svg></app-svg>
+                    <app-svg></app-svg>
+                    <app-svg></app-svg>
+                    <app-svg></app-svg>
+                    <app-svg></app-svg>
                 </div>
-                <button>Confirm</button>
+                <button class="btn">Confirm</button>
             </div>
         </div>
         <footer>
-            <span> book {{$index}}/10</span>
+            <p> <span>book </span> {{currentIndex + 1}} / 10 </p>
         </footer>
     }
 </main>

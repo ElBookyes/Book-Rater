@@ -1,2 +1,117 @@
 @use "../styles.scss" as *;
 
+main {
+  display: grid;
+  justify-content: center;
+  height: 100svh;
+  font-size: 1rem;
+  & h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+  @include mq(small){
+    font-size: 2rem;
+    & h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+.container {
+  --max-width: 1110px;
+  --container-padding: 1rem;
+  
+  width: min(var(--max-width), 100% - (var(--container-padding) * 2));  
+  margin-inline: auto;
+}
+
+.even-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.book {
+  padding: .5rem;
+  & .book-img {
+    min-height: 420px;
+    border: solid 3px var(--clr-text);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  @include mq(medium){
+    grid-template-columns: 60% 40%;
+    min-height: 620px;
+  }
+}
+
+.book-info {
+  display: grid;
+  gap: 1rem;
+  height: min-content;
+  & h2 {
+    font-size: 2rem;
+  }
+  & h3 {
+    font-size: 1.5rem;
+  }
+  & p {
+    font-size: 1.25rem;
+  }
+  & span {
+    color: var(--clr-secondary);
+  }
+
+  & button {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  & button:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  & button:focus {
+    outline: none;
+  }
+
+  & button.btn {
+    background-image: linear-gradient(
+      to right,
+      #f5ce62,
+      #e43603,
+      #fa7199,
+      #e85a19
+    );
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+  }
+}
+
+footer {
+  span {
+    color: var(--clr-secondary);
+  }
+}
+
+
+

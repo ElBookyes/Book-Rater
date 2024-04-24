@@ -23,9 +23,10 @@
 
 :root {
   --background: #0C0C0C;
-  --clr-primary-1: #F2613F;
-  --clr-primary-2: #9B3922;
-  --clr-primary-3: #481E14;
+  --clr-text: #F2613F;
+  --clr-primary: #9B3922;
+  --clr-secondary: #dddbff;
+  --clr-accent: #481E14;
 }
 
 /* Box sizing rules */
@@ -63,6 +64,9 @@ body {
   height: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--clr-text);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Set core body defaults */

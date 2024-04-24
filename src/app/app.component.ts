@@ -3,19 +3,41 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Book } from './book';
 import { BookService } from './book.service';
+import { SvgComponent } from './svgs/svg.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule],
+  imports: [RouterOutlet, ReactiveFormsModule, SvgComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   books: Book[];
+  currentBook!: Book;
+  currentIndex: number = 0;
 
   constructor(private bookService: BookService) {
     this.books = this.bookService.getAllBooks();
+  }
+
+  ngOnInit() {
+    // Get the list of books from the service
+    this.books = this.bookService.getAllBooks();
+    // Display the first book initially
+    this.currentBook = this.books[this.currentIndex];
+  }
+
+  nextBook() {
+    // Move to the next book in the list
+    this.currentIndex = (this.currentIndex + 1) % this.books.length;
+    this.currentBook = this.books[this.currentIndex];
+  }
+
+  previousBook() {
+    // Move to the previous book in the list
+    this.currentIndex = (this.currentIndex - 1 + this.books.length) % this.books.length;
+    this.currentBook = this.books[this.currentIndex];
   }
 
   rateAgainOrExist() {
