@@ -1,1 +1,23 @@
-<h1>test</h1>
+<main>
+    <h1>Book Rater</h1>
+    @for (book of books; track $index) {
+        <div>
+            <div aria-label="img">
+                <img src={{book.img}} alt="Book cover">
+            </div>
+            <div class="book" aria-label="">
+                <h2>{{ book.title }}</h2>
+                <p>{{ book.author }}</p>
+                <p>{{ book.description }}</p>
+                <p>{{ book.rating }}</p>
+                <div>
+                    <!-- Stars Here -->
+                </div>
+                <button>Confirm</button>
+            </div>
+        </div>
+        <footer>
+            <span> book {{$index}}/10</span>
+        </footer>
+    }
+</main>

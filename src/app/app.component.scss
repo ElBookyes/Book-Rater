@@ -1,9 +1,2 @@
 @use "../styles.scss" as *;
 
-h1 {
-    font-size: 2rem;
-    color: blue;
-    @include mq(700px) {
-        color: red;
-    }
-}

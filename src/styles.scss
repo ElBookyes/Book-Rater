@@ -2,25 +2,28 @@
 @use "sass:math";
 @use "sass:map";
 
-
 @mixin mq($size) {
-    @if map.has-key($breakpoints, $size) {
-      $breakpoint: map-get($breakpoints, $size);
-      @media screen and (min-width: $breakpoint) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map-get($breakpoints, $size);
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else if meta.type-of($size) == number {
+    @if math.is-unitless($size) {
+      @error 'when using a number with @mq() make sure to include a unit';
+    } @else {
+      @media screen and (min-width: $size) {
         @content;
       }
-    } @else if meta.type-of($size) == number {
-      @if math.is-unitless($size) {
-        @error 'when using a number with @mq() make sure to include a unit';
-      } @else {
-        @media screen and (min-width: $size) {
-          @content;
-        }
-      }
-    } @else {
-      @error 'the keyword #{$size} is not in the $breakpoints map';
     }
+  } @else {
+    @error 'the keyword #{$size} is not in the $breakpoints map';
   }
+}
+
+:root {
+  
+}
 
 /* Box sizing rules */
 *,
@@ -42,7 +45,7 @@ ol[role="list"] {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--clr-primary-1);
 }
