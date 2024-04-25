@@ -90,19 +90,6 @@ export class BookService {
   ];
 
   getAllBooks(): Book[] {
-    // Retrieve list of books
-    // Implement logic here
     return this.books;
-  }
-
-  updateBook(book: Book) {
-    // Update book details
-    // Implement logic here
-  }
-
-  calculateAverageRating(book: Book): number {
-    // Calculate average rating for a book
-    // Implement logic here
-    return 0; // Placeholder
   }
 }

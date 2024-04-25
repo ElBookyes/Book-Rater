@@ -9,12 +9,9 @@
                 <p><span>Author:</span> {{ currentBook.author }}</p>
                 <p><span>Description:</span> {{ currentBook.description }}</p>
                 <p><span>Current rating:</span> {{ currentBook.rating }}</p>
-                <div class="display-flex">
-                    <app-svg></app-svg>
-                    <app-svg></app-svg>
-                    <app-svg></app-svg>
-                    <app-svg></app-svg>
-                    <app-svg></app-svg>
+                <div>
+                    <p><span>Rate:</span></p>
+                    <app-star-rating [rating]="0"></app-star-rating>                
                 </div>
                 <button class="btn">Confirm</button>
             </div>
