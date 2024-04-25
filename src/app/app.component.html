@@ -2,13 +2,15 @@
     <h1>Book Rater</h1>
     @if (currentBook) {
         <div class="book container even-columns">
-            <div class="book-img" aria-label="img" style="background-image: url({{currentBook.img}});">
-            </div>
+            <div class="book-img" aria-label="img" style="background-image: url({{currentBook.img}});"></div>
             <div class="book-info" aria-label="">
-                <h2><span>Title:</span> {{ currentBook.title }}</h2>
-                <p><span>Author:</span> {{ currentBook.author }}</p>
-                <p><span>Description:</span> {{ currentBook.description }}</p>
-                <p><span>Current rating:</span> {{ averageRating() }}</p>
+                <div class="book-title display-flex">
+                  <h2><span class="highlight">Title: </span> <span *ngIf="!editMode">{{ currentBook.title }}</span><input type="text" [(ngModel)]="currentBook.title" *ngIf="editMode"></h2>
+                  <p (click)="toggleEditMode()">{{ editMode ? 'Save Changes' : 'Edit Book' }}</p>
+                </div>
+                <p><span class="highlight">Author: </span> <span *ngIf="!editMode">{{ currentBook.author }}</span><input type="text" [(ngModel)]="currentBook.author" *ngIf="editMode"></p>
+                <p><span class="highlight">Description: </span> <span *ngIf="!editMode">{{ currentBook.description }}</span><textarea [(ngModel)]="currentBook.description" *ngIf="editMode"></textarea></p>
+                <p><span class="highlight">Current rating: </span> {{ averageRating() }}</p>
                 <div>
                     <p><span>Rate:</span></p>
                     <div id="container" [class.readOnly]="readonly">
@@ -48,5 +50,22 @@
         <footer>
             <p> <span>Book </span> {{currentIndex + 1}} / 10 </p>
         </footer>
-    }
+  }
 </main>
+@if(finished) {
+    <div class="popup-bg">
+        <div class="edit-book popup-body">
+          <h2>Thank you for rating all the books!</h2>
+          <button (click)="reset()">Rate again</button>
+          <button (click)="end()">Nah Im good</button>
+        </div>
+    </div>
+}
+@if(nahImGood) {
+    <div class="popup-bg">
+        <div class="bye-bye popup-body">
+          <h2>Thank you for rating the books!</h2>
+          <h2>Have a nice day!</h2>
+        </div>
+    </div>
+}

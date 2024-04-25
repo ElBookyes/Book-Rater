@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Book } from './book';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FontAwesomeModule, CommonModule],
+  imports: [RouterOutlet, FontAwesomeModule, CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -19,6 +19,8 @@ export class AppComponent {
   currentIndex: number = 0;
   faStar = faStar;
   isButtonDisabled: boolean = true;
+  finished: boolean = false;
+  nahImGood: boolean = false;
 
   @Input() starRating: number = 0; 
   @Input() readonly: boolean = false;
@@ -50,7 +52,7 @@ export class AppComponent {
     console.log(this.books[this.currentIndex].rating);
     this.currentIndex++;
     if (this.currentIndex >= this.books.length) {
-      this.currentIndex = 0;
+      this.finished = true;
     }
     this.currentBook = this.books[this.currentIndex];
     this.isButtonDisabled = true;
@@ -66,6 +68,23 @@ export class AppComponent {
       sum += this.books[this.currentIndex].rating[i];
     }
     return !this.books[this.currentIndex].rating.length ? 0 : (sum / this.books[this.currentIndex].rating.length).toFixed(2) as unknown as number;
+  }
+
+  editMode: boolean = false;
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+  }
+
+  reset(): void {
+    this.currentIndex = 0;
+    this.currentBook = this.books[this.currentIndex];
+    this.finished = false;
+  }
+
+  end(): void {
+    this.finished = false;
+    this.nahImGood = true;
   }
 
   books: Book[] = [
