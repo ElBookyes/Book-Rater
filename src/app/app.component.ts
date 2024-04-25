@@ -172,17 +172,3 @@ export class AppComponent {
   ];
 }
 
-
-// The user can change the name of the author, the title, and the description of the book.
-// The changes are made only after the book is rated with the click of a button.
-// After a book is rated it automatically goes to the next book in the list.
-// After all books have been rated ask the user if he wants to rate them again or exit the app.
-
-// Създаване на колекция с книги - съдържаща точните полета
-// Визуализация на книгата
-// Визуализация на реитингов механизъм за оценка с бутони
-// Функционалност за предвижване на колекцията с книги към следващата книга след оценка
-// Редакция на книгите
-// Качете промените си в GitHub
-// + Допълнителни задания (last task)
-
