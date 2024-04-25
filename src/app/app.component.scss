@@ -97,14 +97,14 @@ main {
     }
   }
 
-  & button:hover {
+  & button.btn:hover {
     background-position: 100% 0;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
   }
 
-  & button:focus {
+  & button.btn:focus {
     outline: none;
   }
 
@@ -117,6 +117,60 @@ main {
       #e85a19
     );
     box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+  }
+
+  & button.btn {
+    background-image: linear-gradient(
+      to right,
+      #f5ce62,
+      #e43603,
+      #fa7199,
+      #e85a19
+    );
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+  }
+
+  & button.btn-disabled {
+    background-image: linear-gradient(
+      to right,
+      #f5ce62,
+      #e43603,
+      #fa7199,
+      #e85a19
+    );
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    opacity: .5;
+  }
+}
+
+
+#container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+
+  fa-icon {
+    color: gray;
+    font-size: 50px;
+    cursor: pointer;
+
+    &.rated,
+    &:hover,
+    &:hover ~ fa-icon {
+      color: #F2613F;
+    }
+
+    transition: color 0.3s ease-in-out;
+  }
+
+  &.readOnly {
+    fa-icon {
+      cursor: default;
+      &:hover:not(.rated),
+      &:hover ~ fa-icon:not(.rated) {
+        color: gray;
+      }
+    }
   }
 }
 

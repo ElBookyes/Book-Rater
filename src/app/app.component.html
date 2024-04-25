@@ -8,12 +8,41 @@
                 <h2><span>Title:</span> {{ currentBook.title }}</h2>
                 <p><span>Author:</span> {{ currentBook.author }}</p>
                 <p><span>Description:</span> {{ currentBook.description }}</p>
-                <p><span>Current rating:</span> {{ currentBook.rating }}</p>
+                <p><span>Current rating:</span> {{ averageRating() }}</p>
                 <div>
                     <p><span>Rate:</span></p>
-                    <app-star-rating [rating]="0"></app-star-rating>                
+                    <div id="container" [class.readOnly]="readonly">
+                        <fa-icon
+                          [class.rated]="starRating >= 5"
+                          [icon]="faStar"
+                          (click)="setRating(5)"
+                        ></fa-icon>
+                        <fa-icon
+                          [class.rated]="starRating >= 4"
+                          [icon]="faStar"
+                          (click)="setRating(4)"
+                        ></fa-icon>
+                      
+                        <fa-icon
+                          [class.rated]="starRating >= 3"
+                          [icon]="faStar"
+                          (click)="setRating(3)"
+                        ></fa-icon>
+                      
+                        <fa-icon
+                          [class.rated]="starRating >= 2"
+                          [icon]="faStar"
+                          (click)="setRating(2)"
+                        ></fa-icon>
+                      
+                        <fa-icon
+                          [class.rated]="starRating >= 1"
+                          [icon]="faStar"
+                          (click)="setRating(1)"
+                        ></fa-icon>
+                      </div>               
                 </div>
-                <button class="btn">Confirm</button>
+                <button [disabled]="isButtonDisabled" [ngClass]="isButtonDisabled ? 'btn-disabled' : 'btn'" (click)="nextBook()">Confirm</button>
             </div>
         </div>
         <footer>
