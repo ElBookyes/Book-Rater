@@ -153,10 +153,7 @@ export class AppComponent {
   ];
 }
 
-// 5 / 10 books
-// title, description, author/authors, rating
-// Visualize 1 book at a time and make a way to rate them (1-5 stars)
-// Average current rating, and a book can be rated multiple times by the same user
+
 // The user can change the name of the author, the title, and the description of the book.
 // The changes are made only after the book is rated with the click of a button.
 // After a book is rated it automatically goes to the next book in the list.
