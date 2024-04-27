@@ -1,5 +1,30 @@
 @use "../styles.scss" as *;
 
+// Common properties
+$primary-gradient: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+$box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+
+// Mixin for button styles
+@mixin button-styles {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  background-size: 300% 100%;
+  transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+
+  &:hover {
+    background-position: 100% 0;
+  }
+}
+
 main {
   display: grid;
   height: 100svh;
@@ -25,19 +50,15 @@ main {
   margin-inline: auto;
 }
 
-.even-columns {
-  display: grid;
-  gap: 1rem;
-}
-
 .display-flex {
   display: flex;
 }
 
 .book {
+  display: grid;
   gap: 2rem;
   padding: .5rem;
-  & .book-img {
+  .book-img {
     justify-self: center;
     height: clamp(420px, 30vw, 820px);
     aspect-ratio: 2/3;
@@ -63,38 +84,35 @@ main {
   @include mq(60em){
     justify-content: start;
   }
-  & h2 {
+  h2 {
     font-size: 2rem;
   }
-  & h3 {
+  h3 {
     font-size: 1.5rem;
   }
-  & p {
+  p {
     font-size: 1.25rem;
   }
-  & .highlight {
+  .highlight {
     color: var(--clr-secondary);
   }
 
-  & button {
+  button {
+    @include button-styles;
     justify-self: center;
     width: 160px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-    border-radius: 50px;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+    background-image: $primary-gradient;
+    box-shadow: $box-shadow;
     @include mq(60em){
       justify-self: start;
     }
+  }
+
+  button.btn-disabled {
+    @include button-styles;
+    background-image: $primary-gradient;
+    box-shadow: $box-shadow;
+    opacity: .5;
   }
 
   .book-title {
@@ -108,50 +126,6 @@ main {
     }
   }
 
-  & button.btn:hover {
-    background-position: 100% 0;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-  }
-
-  & button.btn:focus {
-    outline: none;
-  }
-
-  & button.btn {
-    background-image: linear-gradient(
-      to right,
-      #f5ce62,
-      #e43603,
-      #fa7199,
-      #e85a19
-    );
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-  }
-
-  & button.btn {
-    background-image: linear-gradient(
-      to right,
-      #f5ce62,
-      #e43603,
-      #fa7199,
-      #e85a19
-    );
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-  }
-
-  & button.btn-disabled {
-    background-image: linear-gradient(
-      to right,
-      #f5ce62,
-      #e43603,
-      #fa7199,
-      #e85a19
-    );
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-    opacity: .5;
-  }
 }
 
 
@@ -192,34 +166,28 @@ footer {
   }
 }
 
-.edit-book {
+.edit-book, .bye-bye {
   padding: 1.5rem;
   background: var(--background);
   text-align: center;
-  & h2 {
+
+  h2 {
     font-size: 2rem;
   }
-  & button {
-      cursor: pointer;
-      color: var(--clr-text);
-      background-color: var(--background);
-      border-radius: 10px;
-      padding: 1em;
-      font-size: 1.5rem;
-      &:hover {
-          color: var(--background);
-          background-color: var(--clr-text);
-          transition: 200ms ease;
-      }
-  }
-}
 
-.bye-bye {
-  padding: 1.5rem;
-  background: var(--background);
-  text-align: center;
-  & h2 {
-    font-size: 3rem;
+  button {
+    cursor: pointer;
+    color: var(--clr-text);
+    background-color: var(--background);
+    border-radius: 10px;
+    padding: 1em;
+    font-size: 1.5rem;
+
+    &:hover {
+      color: var(--background);
+      background-color: var(--clr-text);
+      transition: 200ms ease;
+    }
   }
 }
 

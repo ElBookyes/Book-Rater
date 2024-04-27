@@ -1,9 +1,9 @@
 <main>
     <h1>Book Rate</h1>
     @if (currentBook) {
-        <div class="book container even-columns">
-            <div class="book-img" aria-label="img" style="background-image: url({{currentBook.img}});"></div>
-            <div class="book-info" aria-label="">
+        <div class="book container">
+            <div class="book-img" aria-label="Book Image" style="background-image: url({{currentBook.img}});"></div>
+            <div class="book-info" aria-label="Book Information">
                 <div class="book-title display-flex">
                   <h2><span class="highlight">Title: </span> <span *ngIf="!editMode">{{ currentBook.title }}</span><input type="text" [(ngModel)]="currentBook.title" *ngIf="editMode"></h2>
                   <p (click)="toggleEditMode()">{{ editMode ? 'Save Changes' : 'Edit Book' }}</p>
@@ -15,29 +15,49 @@
                     <p><span>Rate:</span></p>
                     <div id="container" [class.readOnly]="readonly">
                         <fa-icon
+                          [attr.aria-label]="starRating >= 1 ? '5 star' : '5 star, not rated'"
+                          tabindex="5"
+                          (keydown.enter)="setRating(5)"
+                          role="button"
                           [class.rated]="starRating >= 5"
                           [icon]="faStar"
                           (click)="setRating(5)"
                         ></fa-icon>
                         <fa-icon
+                          [attr.aria-label]="starRating >= 2 ? '4 stars' : '4 stars, not rated'"
+                          tabindex="4"
+                          (keydown.enter)="setRating(4)"
+                          role="button"
                           [class.rated]="starRating >= 4"
                           [icon]="faStar"
                           (click)="setRating(4)"
                         ></fa-icon>
                       
                         <fa-icon
+                          [attr.aria-label]="starRating >= 3 ? '3 stars' : '3 stars, not rated'"
+                          tabindex="3"
+                          (keydown.enter)="setRating(3)"
+                          role="button"
                           [class.rated]="starRating >= 3"
                           [icon]="faStar"
                           (click)="setRating(3)"
                         ></fa-icon>
                       
                         <fa-icon
+                          [attr.aria-label]="starRating >= 4 ? '2 stars' : '2 stars, not rated'"
+                          tabindex="2"
+                          (keydown.enter)="setRating(2)"
+                          role="button"
                           [class.rated]="starRating >= 2"
                           [icon]="faStar"
                           (click)="setRating(2)"
                         ></fa-icon>
                       
                         <fa-icon
+                          [attr.aria-label]="starRating >= 5 ? '1 stars' : '1 stars, not rated'"
+                          tabindex="1"
+                          (keydown.enter)="setRating(1)"
+                          role="button"
                           [class.rated]="starRating >= 1"
                           [icon]="faStar"
                           (click)="setRating(1)"

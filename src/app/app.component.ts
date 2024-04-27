@@ -17,75 +17,14 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   currentBook!: Book;
   currentIndex: number = 0;
-  faStar = faStar;
   isButtonDisabled: boolean = true;
+  editMode: boolean = false;
   finished: boolean = false;
   nahImGood: boolean = false;
+  faStar = faStar;
 
   @Input() starRating: number = 0; 
   @Input() readonly: boolean = false;
-
-
-  getAllBooks(): Book[] {
-    return this.books;
-  }
-
-  getRating() {
-    return this.books[this.currentIndex].rating;
-  }
-
-  ngOnInit() {
-    this.books = this.getAllBooks();
-    this.currentBook = this.books[this.currentIndex];
-  }
-
-  setRating(starRating: number): void {
-    if (!this.readonly) {
-      this.starRating = starRating;
-      this.isButtonDisabled = false;
-    }
-  }
-
-  nextBook(): void {
-    this.books[this.currentIndex].rating.push(this.starRating);
-    this.setRating(0);
-    console.log(this.books[this.currentIndex].rating);
-    this.currentIndex++;
-    if (this.currentIndex >= this.books.length) {
-      this.finished = true;
-    }
-    this.currentBook = this.books[this.currentIndex];
-    this.isButtonDisabled = true;
-  }
-
-  changeBookTitle(title: string): void {
-    this.books[this.currentIndex].title = title;
-  }
-
-  averageRating(): number {
-    let sum = 0;
-    for (let i = 0; i < this.books[this.currentIndex].rating.length; i++) {
-      sum += this.books[this.currentIndex].rating[i];
-    }
-    return !this.books[this.currentIndex].rating.length ? 0 : (sum / this.books[this.currentIndex].rating.length).toFixed(2) as unknown as number;
-  }
-
-  editMode: boolean = false;
-
-  toggleEditMode(): void {
-    this.editMode = !this.editMode;
-  }
-
-  reset(): void {
-    this.currentIndex = 0;
-    this.currentBook = this.books[this.currentIndex];
-    this.finished = false;
-  }
-
-  end(): void {
-    this.finished = false;
-    this.nahImGood = true;
-  }
 
   books: Book[] = [
     {
@@ -170,5 +109,60 @@ export class AppComponent {
       rating: [],
     },
   ];
+
+
+  getAllBooks(): Book[] {
+    return this.books;
+  }
+
+  getRating() {
+    return this.books[this.currentIndex].rating;
+  }
+
+  ngOnInit() {
+    this.books = this.getAllBooks();
+    this.currentBook = this.books[this.currentIndex];
+  }
+
+  setRating(starRating: number): void {
+    if (!this.readonly) {
+      this.starRating = starRating;
+      this.isButtonDisabled = false;
+    }
+  }
+
+  nextBook(): void {
+    this.books[this.currentIndex].rating.push(this.starRating);
+    this.setRating(0);
+    console.log(this.books[this.currentIndex].rating);
+    this.currentIndex++;
+    if (this.currentIndex >= this.books.length) {
+      this.finished = true;
+    }
+    this.currentBook = this.books[this.currentIndex];
+    this.isButtonDisabled = true;
+  }
+
+  averageRating(): number {
+    const ratings = this.books[this.currentIndex].rating;
+    if (!ratings.length) return 0;
+    const sum = ratings.reduce((total, rating) => total + rating, 0);
+    return +(sum / ratings.length).toFixed(2);
+  }
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+  }
+
+  reset(): void {
+    this.currentIndex = 0;
+    this.currentBook = this.books[this.currentIndex];
+    this.finished = false;
+  }
+
+  end(): void {
+    this.finished = false;
+    this.nahImGood = true;
+  }
 }
 
