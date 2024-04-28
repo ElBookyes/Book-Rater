@@ -10,7 +10,7 @@
                 </div>
                 <p><span class="highlight">Author: </span> <span *ngIf="!editMode">{{ currentBook.author }}</span><input type="text" [(ngModel)]="currentBook.author" *ngIf="editMode"></p>
                 <p><span class="highlight">Description: </span> <span *ngIf="!editMode">{{ currentBook.description }}</span><textarea [(ngModel)]="currentBook.description" *ngIf="editMode"></textarea></p>
-                <p><span class="highlight">rating: </span> {{ averageRating() }}</p>
+                <p><span class="highlight">Current rating: </span> {{ averageRating() }}</p>
                 <div>
                     <p><span>Rate:</span></p>
                     <div id="container" [class.readOnly]="readonly">
