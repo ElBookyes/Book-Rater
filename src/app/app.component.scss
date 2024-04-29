@@ -20,7 +20,8 @@ $box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-position: 100% 0;
   }
 }
@@ -120,7 +121,8 @@ main {
     align-items: center;
     & p {
       cursor: pointer;
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--clr-primary);
       }
     }
@@ -141,7 +143,8 @@ main {
 
     &.rated,
     &:hover,
-    &:hover ~ fa-icon {
+    &:hover,
+    &:focus ~ fa-icon {
       color: #F2613F;
     }
 
@@ -183,7 +186,8 @@ footer {
     padding: 1em;
     font-size: 1.5rem;
 
-    &:hover {
+    &:hover, 
+    &:focus {
       color: var(--background);
       background-color: var(--clr-text);
       transition: 200ms ease;
