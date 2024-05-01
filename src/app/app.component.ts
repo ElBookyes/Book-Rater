@@ -114,10 +114,6 @@ export class AppComponent {
     return this.books;
   }
 
-  getRating() {
-    return this.books[this.currentIndex].rating;
-  }
-
   ngOnInit() {
     this.books = this.getAllBooks();
     this.currentBook = this.books[this.currentIndex];
@@ -130,7 +126,7 @@ export class AppComponent {
     }
   }
 
-  nextBook(): void {
+  moveToNextBook(): void {
     this.books[this.currentIndex].rating.push(this.starRating);
     this.setRating(0);
     console.log(this.books[this.currentIndex].rating);
@@ -142,7 +138,7 @@ export class AppComponent {
     this.isButtonDisabled = true;
   }
 
-  averageRating(): number {
+  getAverageRating(): number {
     const ratings = this.books[this.currentIndex].rating;
     if (!ratings.length) return 0;
     const sum = ratings.reduce((total, rating) => total + rating, 0);

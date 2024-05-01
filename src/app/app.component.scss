@@ -130,7 +130,7 @@ main {
 
 }
 
-
+// Star rating styles
 #container {
   display: flex;
   justify-content: flex-end;
@@ -143,8 +143,7 @@ main {
 
     &.rated,
     &:hover,
-    &:hover,
-    &:focus ~ fa-icon {
+    &:hover ~ fa-icon {
       color: #F2613F;
     }
 
@@ -162,6 +161,7 @@ main {
   }
 }
 
+// Footer styles
 footer {
   text-align: center;
   span {
@@ -169,6 +169,7 @@ footer {
   }
 }
 
+// Popup styles
 .edit-book, .bye-bye {
   padding: 1.5rem;
   background: var(--background);
