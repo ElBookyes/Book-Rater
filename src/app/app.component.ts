@@ -1,4 +1,4 @@
-import { Component, Input, ngInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Book } from './bookInterface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.scss',
 })
 
-export class AppComponent implements ngInit{
+export class AppComponent implements OnInit{
   currentBook!: Book;
   currentIndex: number = 0;
   isButtonDisabled: boolean = true;
